@@ -11,9 +11,9 @@ Capybara.default_driver = :selenium
 ActionController::Base.allow_rescue = false
 
 ActionController::Base.allow_rescue = true
-Cucumber::Rails::World.use_transactional_fixtures = true
-
+Cucumber::Rails::World.use_transactional_fixtures = false
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
-require 'database_cleaner'
-DatabaseCleaner.strategy = :truncation
+Before do
+  Mongoid.master.collections.each(&:remove)
+end
