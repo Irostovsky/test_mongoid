@@ -1,4 +1,8 @@
 TestMongoid::Application.routes.draw do
-  resources :articles
+  get "comment/create"
+
+  resources :articles do
+    resources :comments
+  end
   root :to => 'articles#index'
 end
