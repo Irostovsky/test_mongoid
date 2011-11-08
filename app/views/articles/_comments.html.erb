@@ -1,8 +1,6 @@
 <div class='comments'>
-  <% if @article.comments.size > 0 %>
-    <h2>Comments</h2>
-    <% @article.comments.each do |comment| %>
-      <%= render comment %>
-    <% end %>
+  <h2>Comments</h2>
+  <% @article.comments.each do |comment| %>
+    <%= render comment %>
   <% end %>
 </div>
