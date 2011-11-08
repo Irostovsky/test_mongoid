@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @article.comments.find params[:id]
     @comment.destroy
+    flash[:notice] = 'Comment deleted!'
   end
 
 private
