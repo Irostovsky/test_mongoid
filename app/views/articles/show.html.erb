@@ -14,38 +14,10 @@
   <%= @article.content %>
 </p>
 
-<% if @article.comments.size > 0 %>
-  <h2>Comments</h2>
-  <% @article.comments.each do |comment| %>
-    <div id="<%= dom_id(comment) %>">
-      <h3><%= comment.name %></h3>
-      <p><%= comment.content %></p>
-      <p><%= link_to 'Delete', article_comment_path(@article, comment), :method => :delete, :confirm => 'Are you sure?', :remote => true %></p>
-    </div>
-  <% end %>
-<% end %>
+<%= render 'comments' %>
 
 <h2>New Comment</h2>
-<%= form_for [@article, @comment ||= Comment.new] do |f| %>
-<% if @comment.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-    <ul>
-    <% @comment.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-  <p><%= f.label :name %> <%= f.text_field :name %></p>
-  <p><%= f.text_area :content, :rows => 10 %></p>
-  <p><%= f.submit %></p>
-<% end %>
-
-
-
+<%= render '/comments/new' %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>

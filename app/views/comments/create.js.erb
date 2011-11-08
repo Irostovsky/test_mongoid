@@ -1,0 +1,4 @@
+$('#notice').html('<%= notice%>');
+$('.comments div').last().after("<%= e render @comment %>");
+<% @comment = nil%>
+$('#new_comment').replaceWith("<%= e render '/comments/new' %>")

@@ -5,9 +5,10 @@ class CommentsController < ApplicationController
     @article = Article.find params[:article_id]
     @comment = @article.comments.create params[:comment]
     if @comment.valid?
-      redirect_to @article, :notice => 'Comment created!'
+      flash[:notice] = 'Comment created!'
+      render :create, :layout => false
     else
-      render :template => '/articles/show'
+      render :create_errors, :layout => false
     end
   end
   
