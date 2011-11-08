@@ -3,4 +3,5 @@ class Comment
   field :name
   field :content
   embedded_in :article
+  validates_presence_of :name
 end
