@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_filter :find_article
 
   def create
-    @article = Article.find params[:article_id]
     @comment = @article.comments.create params[:comment]
     if @comment.valid?
       flash[:notice] = 'Comment created!'
