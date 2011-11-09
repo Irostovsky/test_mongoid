@@ -1,4 +1,3 @@
 $('#notice').html('<%= notice%>');
 $('.comments').append("<%= e render @comment %>");
-<% @comment = nil%>
-$('#new_comment').replaceWith("<%= e render '/comments/new_form' %>")
+$('#new_comment').replaceWith("<%= e render('/comments/new_form', :comment => Comment.new) %>")

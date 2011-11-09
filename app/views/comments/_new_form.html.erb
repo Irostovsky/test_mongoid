@@ -1,5 +1,6 @@
-<%= form_for [@article, @comment ||= Comment.new], :remote => true do |f| %>
-  <%= render '/shared/error_explanation', :object => @comment %>
+<% comment ||=  @comment || Comment.new %>
+<%= form_for [@article, comment], :remote => true do |f| %>
+  <%= render '/shared/error_explanation', :object => comment %>
 
   <p><%= f.label :name %> <%= f.text_field :name %></p>
   <p><%= f.text_area :content, :rows => 10 %></p>
