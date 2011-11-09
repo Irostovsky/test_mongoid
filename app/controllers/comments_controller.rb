@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Comment created!'
       render :create, :layout => false
     else
-      render :create_errors, :layout => false
+      render :new, :layout => false
     end
   end
   
