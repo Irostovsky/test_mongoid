@@ -1,4 +1,3 @@
-<% comment ||=  @comment || Comment.new %>
 <%= form_for [@article, comment], :remote => true do |f| %>
   <%= render '/shared/error_explanation', :object => comment %>
 

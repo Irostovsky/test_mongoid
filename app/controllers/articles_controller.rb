@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   
+  before_filter :init_comment, :only => [:show, :create, :update]
+  
   def index
     @articles = Article.all
   end
@@ -38,6 +40,12 @@ class ArticlesController < ApplicationController
     @article = Article.find params[:id]
     @article.destroy
     redirect_to articles_url
+  end
+  
+private
+  
+  def init_comment
+    @comment = Comment.new
   end
     
 end
