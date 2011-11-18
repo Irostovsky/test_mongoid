@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'json'
 gem 'mongoid'
 gem 'bson_ext'
+gem 'inherited_resources'
 
 # Gems used only for assets and not required
 # in production environments by default.
