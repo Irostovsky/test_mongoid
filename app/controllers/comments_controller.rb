@@ -1,25 +1,12 @@
-class CommentsController < ApplicationController
-  before_filter :find_article
-
-  def create
-    @comment = @article.comments.create params[:comment]
-    if @comment.valid?
-      flash[:notice] = 'Comment created!'
-      render :create, :layout => false
-    else
-      render :new, :layout => false
-    end
-  end
+class CommentsController < InheritedResources::Base
+  belongs_to :article
+  actions :create, :destroy
+  respond_to :js
+  layout false
   
-  def destroy
-    @comment = @article.comments.find params[:id]
-    @comment.destroy
-    flash[:notice] = 'Comment deleted!'
-  end
-
-private
-
-  def find_article
-    @article = Article.find params[:article_id]
+  def create
+    create! do |success, failure|
+      failure.js { render :new }
+    end
   end
 end
